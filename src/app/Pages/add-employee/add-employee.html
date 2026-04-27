@@ -1,0 +1,262 @@
+<div class="flex flex-col justify-center items-center bg-[#f7f7f5d8] min-h-133 min-w-full">
+  <div class="fixed w-screen top-20 z-20 border-b border-t bg-white">
+    <div class="flex items-center justify-between px-6 py-2">
+      <div class="flex items-center gap-4">
+        <button
+          routerLink="/employees"
+          class="flex h-9 w-9 items-center justify-center rounded-md border border-[#756cf591] text-[#0d048a91] hover:bg-[#c1bdff91] cursor-pointer"
+        >
+          <i class="fa-solid fa-chevron-left text-sm"></i>
+        </button>
+        <h1 class="text-2xl font-bold text-slate-800">Add Employee</h1>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button
+          class="rounded-md border px-4 py-2 text-sm font-medium border-[#756cf591] text-[#0d048a91] hover:bg-[#c1bdff91]"
+        >
+          Save as Draft
+        </button>
+        <button
+          class="rounded-md px-4 py-2 text-sm font-medium bg-[#0d048a91] text-white hover:bg-[#4138be91]"
+        >
+          Publish & Next
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="mt-15">
+    <div class="my-2 text-center">
+      <h1 class="font-bold text-2xl">Fill the Details below</h1>
+    </div>
+    <form [formGroup]="userForm" class="flex flex-wrap">
+      <div
+        class="flex flex-col bg-white px-16 py-10 rounded-lg shadow-lg min-h-100 w-180 gap-6"
+      >
+        <div class="flex flex-col gap-4">
+          <div class="flex gap-4">
+            <div>
+              <input
+                type="text"
+                id="firstName"
+                formControlName="empName"
+                placeholder="First Name"
+                class="text-sm border border-gray-500 rounded-md px-4 py-2 w-100"
+              />
+              @if (submitted && userForm.get('empName')?.errors) {
+                <div>
+                  @if (userForm.get('empName')?.errors?.['required']) {
+                    <h1 class="text-xs text-red-600 p-2">This Field shouldn't be empty</h1>
+                  }
+                </div>
+              }
+            </div>
+            <div>
+              <input
+                type="text"
+                id="lastName"
+                formControlName="lastName"
+                placeholder="Last Name"
+                class="text-sm border border-gray-500 rounded-md px-4 py-2 w-45"
+              />
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div>
+              <input
+                type="email"
+                id="email"
+                formControlName="email"
+                placeholder="Email"
+                class="text-sm border border-gray-500 rounded-md px-4 py-2 w-100"
+              />
+              @if (submitted && userForm.get('email')?.errors) {
+                <div>
+                  @if (userForm.get('email')?.errors?.['required']) {
+                    <h1 class="text-xs text-red-600 p-2">This Field shouldn't be empty</h1>
+                  }
+                  @if (userForm.get('email')?.errors?.['email']) {
+                    <h1 class="text-xs text-red-600 p-2">Enter a Valid Email</h1>
+                  }
+                </div>
+              }
+            </div>
+            <div>
+              <input
+                type="text"
+                id="contact"
+                formControlName="contactNo"
+                placeholder="Contact no"
+                class="text-sm border border-gray-500 rounded-md px-4 py-2 w-45"
+              />
+              @if (submitted && userForm.get('contactNo')?.errors) {
+                <div>
+                  @if (userForm.get('contactNo')?.errors?.['required']) {
+                    <h1 class="text-xs text-red-600 p-2">This Field shouldn't be empty</h1>
+                  }
+                  @if (userForm.get('contactNo')?.errors?.['minlength']) {
+                    <h1 class="text-xs text-red-600 p-2">
+                      Contact number should be atleast 10 digits
+                    </h1>
+                  }
+                  @if (userForm.get('contactNo')?.errors?.['maxlength']) {
+                    <h1 class="text-xs text-red-600 p-2">
+                      Contact number should be atmost 10 digits
+                    </h1>
+                  }
+                </div>
+              }
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div>
+              <input
+                type="text"
+                id="dept"
+                formControlName="deptName"
+                placeholder="Department"
+                class="text-sm border border-gray-500 rounded-md px-4 py-2 w-60"
+              />
+              @if (submitted && userForm.get('deptName')?.errors) {
+                <div>
+                  @if (userForm.get('deptName')?.errors?.['required']) {
+                    <h1 class="text-xs text-red-600 p-2">This Field shouldn't be empty</h1>
+                  }
+                </div>
+              }
+            </div>
+            <div>
+              <input
+                type="text"
+                id="designation"
+                formControlName="designation"
+                placeholder="Designation"
+                class="text-sm border border-gray-500 rounded-md px-4 py-2 w-40"
+              />
+              @if (submitted && userForm.get('designation')?.errors) {
+                <div>
+                  @if (userForm.get('designation')?.errors?.['required']) {
+                    <h1 class="text-xs text-red-600 p-2">This Field shouldn't be empty</h1>
+                  }
+                </div>
+              }
+            </div>
+            <div>
+              <select
+                id="role"
+                formControlName="role"
+                class="text-sm border border-gray-500 rounded-md p-2 w-41 text-gray-500"
+              >
+                <option value="">Select role</option>
+                <option value="Hr">HR</option>
+                <option value="Employee">Employee</option>
+              </select>
+              @if (submitted && userForm.get('role')?.errors) {
+                <div>
+                  @if (userForm.get('role')?.errors?.['required']) {
+                    <h1 class="text-xs text-red-600 p-2">This Field shouldn't be empty</h1>
+                  }
+                </div>
+              }
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div>
+              <input
+                type="text"
+                id="userName"
+                formControlName="userName"
+                placeholder="User Name"
+                class="text-sm border border-gray-500 rounded-md px-4 py-2 w-100"
+              />
+              @if (submitted && userForm.get('userName')?.errors) {
+                <div>
+                  @if (userForm.get('userName')?.errors?.['required']) {
+                    <h1 class="text-xs text-red-600 p-2">This Field shouldn't be empty</h1>
+                  }
+                </div>
+              }
+            </div>
+            <div>
+              <input
+                type="password"
+                id="password"
+                formControlName="password"
+                placeholder="Password"
+                class="text-sm border border-gray-500 rounded-md px-4 py-2 w-45"
+              />
+              @if (submitted && userForm.get('password')?.errors) {
+                <div>
+                  @if (userForm.get('password')?.errors?.['required']) {
+                    <h1 class="text-xs text-red-600 p-2">This Field shouldn't be empty</h1>
+                  }
+                  @if (userForm.get('password')?.errors?.['minlength']) {
+                    <h1 class="text-xs text-red-600 p-2">Password should be atleast 5 digits</h1>
+                  }
+                  @if (userForm.get('password')?.errors?.['maxlength']) {
+                    <h1 class="text-xs text-red-600 p-2">Password should be atmost 8 digits</h1>
+                  }
+                </div>
+              }
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div>
+              <input
+                type="number"
+                id="sickLeave"
+                formControlName="sickLeaveBalance"
+                placeholder="Sick Leave Balance"
+                class="text-sm border border-gray-500 rounded-md px-4 py-2 w-100"
+              />
+              @if (submitted && userForm.get('sickLeaveBalance')?.errors) {
+                <div>
+                  @if (userForm.get('sickLeaveBalance')?.errors?.['required']) {
+                    <h1 class="text-xs text-red-600 p-2">This Field shouldn't be empty</h1>
+                  }
+                  @if (userForm.get('sickLeaveBalance')?.errors?.['maxlength']) {
+                    <h1 class="text-xs text-red-600 p-2">This field should be atmost 4 digits</h1>
+                  }
+                </div>
+              }
+            </div>
+            <div>
+              <input
+                type="number"
+                id="paidLeave"
+                formControlName="paidLeaveBalance"
+                placeholder="Paid Leave Balance"
+                class="text-sm border border-gray-500 rounded-md px-4 py-2 w-45"
+              />
+              @if (submitted && userForm.get('sickLeaveBalance')?.errors) {
+                <div>
+                  @if (userForm.get('sickLeaveBalance')?.errors?.['required']) {
+                    <h1 class="text-xs text-red-600 p-2">This Field shouldn't be empty</h1>
+                  }
+                  @if (userForm.get('sickLeaveBalance')?.errors?.['maxlength']) {
+                    <h1 class="text-xs text-red-600 p-2">This Field should be atmost 4 digits</h1>
+                  }
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-around">
+          <button
+            class="bg-[#0d048a91] text-white hover:bg-[#271ad391] rounded-sm cursor-pointer px-4 py-2 text-sm"
+            (click)="onSubmit()"
+          >
+            Submit
+          </button>
+
+          <button
+            class="bg-[#0d048a91] text-white hover:bg-[#271ad391] rounded-sm cursor-pointer px-4 py-2 text-sm"
+            (click)="onClear()"
+          >
+            Clear
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

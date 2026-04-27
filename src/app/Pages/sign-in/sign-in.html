@@ -1,0 +1,62 @@
+<div class="flex justify-center items-start p-4">
+  <div class="w-full max-w-md bg-white p-6 rounded-lg shadow-xl">
+    <div class="p-4">
+      <h2 class="font-bold text-2xl text-center">Sign In</h2>
+    </div>
+
+    <form [formGroup]="signInForm" (ngSubmit)="onSubmit()" class="w-full">
+      <div class="w-full p-2 flex flex-col gap-4">
+        <div>
+          <input
+            class="w-full p-2 text-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            id="userName"
+            type="name"
+            formControlName="userName"
+            placeholder="user name"
+          />
+
+          @if (submitted && signInForm.get('userName')?.errors) {
+            <div class="error mt-1">
+              @if (signInForm.get('userName')?.errors?.['required']) {
+                <small class="text-red-500">This field is required</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div>
+          <input
+            class="w-full p-2 text-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            id="password"
+            type="password"
+            formControlName="password"
+            placeholder="Enter your password"
+          />
+
+          @if (submitted && signInForm.get('password')?.errors) {
+            <div class="error mt-1">
+              @if (signInForm.get('password')?.errors?.['required']) {
+                <small class="text-red-500">This Field is required</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div>
+          @if (submitted && errorMsg) {
+            <small class="text-red-500">{{ errorMsg }}</small>
+          }
+        </div>
+
+        <div class="p-2 text-center">
+          <button
+            class="mt-6 bg-[#0d048a91] hover:bg-[#271ad391] text-white px-5 py-2 rounded cursor-pointer text-sm"
+            type="submit"
+          >
+            LogIn
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

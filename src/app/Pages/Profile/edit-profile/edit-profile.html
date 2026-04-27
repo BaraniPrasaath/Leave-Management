@@ -1,0 +1,98 @@
+<div class="min-h-screen bg-gray-100 flex justify-center items-center p-6">
+  <div class="w-full max-w-4xl bg-white shadow-xl rounded-2xl overflow-hidden">
+    <!-- Header -->
+    <div class="bg-linear-to-r from-blue-600 to-indigo-600 text-white p-6">
+      <h2 class="text-2xl font-bold">Edit Profile</h2>
+      <p class="text-sm opacity-90">Update your details</p>
+    </div>
+
+    <!-- Form -->
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <!-- Username -->
+        <div>
+          <label class="text-sm text-gray-500">Username</label>
+          <input formControlName="userName" class="w-full border p-2 rounded mt-1" />
+          @if (form.get('userName')?.errors) {
+            <div>
+              @if (form.get('userName')?.errors?.['required']) {
+                <p class="text-sm text-red-600">This field is Required</p>
+              }
+            </div>
+          }
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label class="text-sm text-gray-500">Email</label>
+          <input formControlName="email" class="w-full border p-2 rounded mt-1" />
+          @if (form.get('email')?.errors) {
+            <div>
+              @if (form.get('email')?.errors?.['required']) {
+                <p class="text-sm text-red-600">This field is Required</p>
+              }
+              @if (form.get('email')?.errors?.['email']) {
+                <p class="text-sm text-red-600">Enter Valid Emain</p>
+              }
+            </div>
+          }
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <label class="text-sm text-gray-500">Contact Number</label>
+          <input type="tel" formControlName="contactNo" class="w-full border p-2 rounded mt-1" />
+          @if (form.get('contactNo')?.touched && form.get('contactNo')?.errors?.['pattern']) {
+            <p class="text-sm text-red-600">Enter valid 10 digit mobile number</p>
+          }
+          @if (form.get('contactNo')?.touched && form.get('contactNo')?.errors?.['required']) {
+            <p class="text-sm text-red-600">This field is Required</p>
+          }
+        </div>
+
+        <!-- Designation -->
+        <div>
+          <label class="text-sm text-gray-500">Designation</label>
+          <input formControlName="designation" class="w-full border p-2 rounded mt-1" />
+        </div>
+
+        <!-- Department -->
+        <div>
+          <label class="text-sm text-gray-500">Department</label>
+          <input formControlName="deptName" class="w-full border p-2 rounded mt-1" />
+        </div>
+
+        <!-- Role (disabled) -->
+        <div>
+          <label class="text-sm text-gray-500">Role</label>
+          <input formControlName="role" class="w-full border p-2 rounded mt-1 bg-gray-100" />
+        </div>
+
+        <!-- Employee ID (disabled) -->
+        <div>
+          <label class="text-sm text-gray-500">Employee ID</label>
+          <input formControlName="empId" class="w-full border p-2 rounded mt-1 bg-gray-100" />
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex justify-end gap-3 mt-8">
+        <button
+          type="button"
+          class="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300 cursor-pointer"
+          (click)="onCancel()"
+        >
+          Cancel
+        </button>
+
+        <button
+          type="submit"
+          class="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700 cursor-pointer"
+          [disabled]="form.invalid"
+        >
+          Save Changes
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

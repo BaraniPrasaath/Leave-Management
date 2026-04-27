@@ -1,0 +1,39 @@
+<div class="flex justify-center items-center h-screen w-full">
+  <div class="p-6 max-w-lg mx-auto bg-white shadow rounded-xl">
+    <h2 class="text-xl font-bold mb-4">Apply Leave</h2>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" class="space-y-4">
+      <input
+        type="number"
+        formControlName="empId"
+        placeholder="Employee ID"
+        class="w-full border p-2 rounded"
+      />
+
+      <select formControlName="leaveType" class="w-full border p-2 rounded">
+        <option value="" selected>Select Type</option>
+        <option value="paidLeave">Paid Leave</option>
+        <option value="sickLeave">Sick Leave</option>
+      </select>
+
+      <input type="date" formControlName="fromDate" class="w-full border p-2 rounded" />
+
+      <input type="date" formControlName="toDate" class="w-full border p-2 rounded" />
+
+      <textarea
+        formControlName="reason"
+        placeholder="Reason"
+        class="w-full border p-2 rounded"
+      ></textarea>
+
+      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded w-full cursor-pointer hover:bg-blue-600">Submit</button>
+    </form>
+
+    <!-- Message -->
+    @if (message()) {
+      <p class="mt-4 text-center font-medium text-green-600">
+        {{ message() }}
+      </p>
+    }
+  </div>
+</div>

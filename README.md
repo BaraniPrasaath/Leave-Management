@@ -57,3 +57,15 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+#Login Credintials
+    Barani (employee)
+        - user name: barani567
+        - password: 567567
+    Virat kohli (HR)
+        - user name: ViratKohli
+        - password: virat2
+    Monal Barinm (employee)
+        - user name: monakl@123
+        - password: 123

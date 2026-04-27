@@ -1,0 +1,72 @@
+<div class="min-h-screen bg-gray-100 flex justify-center items-center p-6">
+  <div class="w-full max-w-3xl bg-white rounded-2xl shadow-lg p-8 my-5">
+    <div class="flex justify-between border-b pb-4 mb-6">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-800">
+          {{ employee()?.empName }}
+        </h1>
+        <p class="text-sm text-gray-500 mt-1">Employee ID: {{ employee()?.empId }}</p>
+      </div>
+      <div>
+        <button class="border rounded-sm px-4 py-2 text-xs bg-white text-red-600 hover:bg-red-600 hover:text-white border-red-600 cursor-pointer" (click)="onDelete(employee()?.empId)">Delete</button>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-gray-50 rounded-xl p-4 shadow-sm">
+        <p class="text-sm text-gray-500">Role</p>
+        <h2 class="text-lg font-semibold text-gray-800">
+          {{ employee()?.role }}
+        </h2>
+      </div>
+
+      <div class="bg-gray-50 rounded-xl p-4 shadow-sm">
+        <p class="text-sm text-gray-500">Department</p>
+        <h2 class="text-lg font-semibold text-gray-800">
+          {{ employee()?.deptName }}
+        </h2>
+      </div>
+
+      <div class="bg-gray-50 rounded-xl p-4 shadow-sm">
+        <p class="text-sm text-gray-500">Designation</p>
+        <h2 class="text-lg font-semibold text-gray-800">
+          {{ employee()?.designation }}
+        </h2>
+      </div>
+
+      <div class="bg-gray-50 rounded-xl p-4 shadow-sm">
+        <p class="text-sm text-gray-500">Contact Number</p>
+        <h2 class="text-lg font-semibold text-gray-800">
+          {{ employee()?.contactNo }}
+        </h2>
+      </div>
+
+      <div class="bg-gray-50 rounded-xl p-4 shadow-sm md:col-span-2">
+        <p class="text-sm text-gray-500">Email</p>
+        <h2 class="text-lg font-semibold text-gray-800 break-all">
+          {{ employee()?.email }}
+        </h2>
+      </div>
+    </div>
+
+    <div class="mt-8">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">Leave Balance</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-red-50 border border-red-200 rounded-xl p-5">
+          <p class="text-sm text-red-500">Sick Leave</p>
+          <h3 class="text-2xl font-bold text-red-600">
+            {{ employee()?.sickLeaveBalance }}
+          </h3>
+        </div>
+
+        <div class="bg-green-50 border border-green-200 rounded-xl p-5">
+          <p class="text-sm text-green-500">Paid Leave</p>
+          <h3 class="text-2xl font-bold text-green-600">
+            {{ employee()?.paidLeaveBalance }}
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

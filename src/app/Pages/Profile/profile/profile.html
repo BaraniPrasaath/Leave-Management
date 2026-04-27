@@ -1,0 +1,106 @@
+<div class="min-h-screen bg-gray-100 flex justify-center items-center p-6">
+  @if (user$ | async; as user) {
+    <div class="w-full max-w-4xl bg-white shadow-xl rounded-2xl overflow-hidden">
+      <!-- Top Banner -->
+
+      <div class="bg-linear-to-r from-blue-600 to-indigo-600 text-white p-8">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <!-- Left -->
+          <div class="flex items-center gap-5">
+            <div
+              class="w-20 h-20 rounded-full bg-white text-blue-600 flex items-center justify-center text-3xl font-bold shadow-md"
+            >
+              {{ user.empName.charAt(0) }}
+            </div>
+
+            <div>
+              <h1 class="text-3xl font-bold">{{ user.empName }}</h1>
+              <p class="text-sm opacity-90">{{ user.designation }}</p>
+              <span
+                class="inline-block mt-2 px-3 py-1 text-sm rounded-full bg-white/20 border border-white/30"
+              >
+                {{ user.role }}
+              </span>
+            </div>
+          </div>
+
+          <!-- Right -->
+          <div class="text-sm md:text-right">
+            <p><span class="font-semibold">Employee ID:</span> {{ user.empId }}</p>
+            <p><span class="font-semibold">Department:</span> {{ user.deptName }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="p-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Personal Details -->
+        <div class="lg:col-span-2">
+          <h2 class="text-xl font-semibold text-gray-800 mb-5 border-b pb-2">Profile Details</h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div class="bg-gray-50 rounded-xl p-4 border">
+              <p class="text-sm text-gray-500">Username</p>
+              <p class="text-base font-medium text-gray-800">{{ user.userName }}</p>
+            </div>
+
+            <div class="bg-gray-50 rounded-xl p-4 border">
+              <p class="text-sm text-gray-500">Email</p>
+              <p class="text-base font-medium text-gray-800">{{ user.email }}</p>
+            </div>
+
+            <div class="bg-gray-50 rounded-xl p-4 border">
+              <p class="text-sm text-gray-500">Contact Number</p>
+              <p class="text-base font-medium text-gray-800">{{ user.contactNo }}</p>
+            </div>
+
+            <div class="bg-gray-50 rounded-xl p-4 border">
+              <p class="text-sm text-gray-500">Designation</p>
+              <p class="text-base font-medium text-gray-800">{{ user.designation }}</p>
+            </div>
+
+            <div class="bg-gray-50 rounded-xl p-4 border">
+              <p class="text-sm text-gray-500">Department</p>
+              <p class="text-base font-medium text-gray-800">{{ user.deptName }}</p>
+            </div>
+
+            <div class="bg-gray-50 rounded-xl p-4 border">
+              <p class="text-sm text-gray-500">Password</p>
+              <p class="text-base font-medium text-gray-800">••••••••</p>
+            </div>
+
+            <div class="bg-gray-50 rounded-xl p-4 border">
+              <p class="text-sm text-gray-500">Password</p>
+              <button class="mt-1 text-blue-600 font-medium hover:underline cursor-pointer">
+                Change Password
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-semibold text-gray-800 mb-5 border-b pb-2">Leave Summary</h2>
+
+          <div class="space-y-4">
+            <div class="bg-blue-50 border border-blue-200 rounded-2xl p-5 shadow-sm">
+              <p class="text-sm text-blue-600 font-medium">Paid Leave Balance</p>
+              <h3 class="text-3xl font-bold text-blue-800 mt-2">{{ user.paidLeaveBalance }}</h3>
+            </div>
+
+            <div class="bg-red-50 border border-red-200 rounded-2xl p-5 shadow-sm">
+              <p class="text-sm text-red-600 font-medium">Sick Leave Balance</p>
+              <h3 class="text-3xl font-bold text-red-800 mt-2">{{ user.sickLeaveBalance }}</h3>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button
+            class="bg-white text-blue-600 px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition cursor-pointer" (click)="onEdit()"
+          >
+            Edit Profile
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+</div>

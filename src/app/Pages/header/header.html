@@ -1,0 +1,63 @@
+<div
+  class="flex text-black p-4 mb-2 bg-white justify-between rounded-lg shadow-lg fixed w-full z-10 top-0"
+>
+  <div>
+    <!-- <h1 class="font-bold cursor-pointer"  /> -->
+    <img [src]="logo" class="w-10 h-10 cursor-pointer" alt="" routerLink="/" />
+  </div>
+
+  <div class="flex gap-2 items-center">
+    @if (services?.isLoggedin()) {
+      @if (services?.role()?.toLowerCase() === 'hr') {
+        <div class="bg-[#0d048a91] rounded-sm hover:bg-[#271ad391]">
+          <p class="cursor-pointer px-2 py-1 text-white text-sm" routerLink="/employees">
+            Employees
+          </p>
+        </div>
+        <div class="bg-[#0d048a91] rounded-sm hover:bg-[#271ad391]">
+          <p class="cursor-pointer px-2 py-1 text-white text-sm" routerLink="/leave-balance">
+            Leave Balance
+          </p>
+        </div>
+        <div class="bg-[#0d048a91] rounded-sm hover:bg-[#271ad391]">
+          <p class="cursor-pointer px-2 py-1 text-white text-sm" routerLink="/leave-requests">
+            Leave Request
+          </p>
+        </div>
+      } @else{
+        <div class="bg-[#0d048a91] rounded-sm hover:bg-[#271ad391]" (click)="goToEmployee('bal', empId)">
+          <p class="cursor-pointer px-2 py-1 text-white text-sm">
+            Leave Balance
+          </p>
+        </div>
+        <div class="bg-[#0d048a91] rounded-sm hover:bg-[#271ad391]" (click)="goToEmployee('req', empId)">
+          <p class="cursor-pointer px-2 py-1 text-white text-sm">
+            Leave Request
+          </p>
+        </div>
+        <div class="bg-[#0d048a91] rounded-sm hover:bg-[#271ad391]" routerLink="new-request">
+          <p class="cursor-pointer px-2 py-1 text-white text-sm">
+            New Request
+          </p>
+        </div>
+      }
+      <div class="flex items-center ml-10 gap-2">
+        <div id="imageBox" class="rounded-full">
+          <img
+            [src]="profile"
+            class="w-10 h-10 rounded-full cursor-pointer"
+            alt=""
+            routerLink="/profile"
+          />
+        </div>
+        <div class="bg-red-500 rounded-sm hover:bg-red-600">
+          <p class="cursor-pointer px-2 py-1 text-white" (click)="onClick()">LogOUT</p>
+        </div>
+      </div>
+    } @else {
+      <div class="bg-[#0d048a91] rounded-sm hover:bg-[#271ad391]">
+        <p class="cursor-pointer px-3 py-1 text-white text-sm" routerLink="/sign-in">LogIn</p>
+      </div>
+    }
+  </div>
+</div>
