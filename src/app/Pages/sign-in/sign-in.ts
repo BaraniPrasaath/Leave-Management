@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { loginUserModel, userModel } from '../../DataModels/userModel';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { AuthService } from '../../Services/auth-service';
 
 @Component({
@@ -24,6 +24,7 @@ export class SignIn {
     private fb: FormBuilder,
     private services: AuthService,
     private router: Router,
+    private route: ActivatedRoute,
   ) {
     this.signInForm = this.fb.group({
       userName: ['', [Validators.required]],
@@ -41,7 +42,8 @@ export class SignIn {
         console.log('role: ', res.role);
         this.services.setUser(res);
         this.services.setRole(res.role);
-        this.router.navigate(['/']);
+        const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+        this.router.navigateByUrl(returnUrl);
       },
       error: (err) => {
         console.log('Login Failed: ', err);

@@ -8,6 +8,12 @@
     <div class="text-center text-gray-500">Loading...</div>
   }
 
+  @if(!leaves().length){
+    <div class="text-center">
+      <h1>No Any Datas are there...</h1>
+    </div>
+  }
+
   @if (!loading()) {
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">

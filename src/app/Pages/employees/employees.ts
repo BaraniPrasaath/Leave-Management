@@ -49,11 +49,15 @@ export class Employees implements OnInit, OnDestroy {
     });
     this.services.getEmployees();
     console.log('Employees: ', this.employees());
+
+    this.route.queryParams.subscribe((params) => {
+      this.searchText.set(params['search'] || '');
+      this.roleFilter.set(params['role'] || '');
+    });
   }
 
   ngOnDestroy(): void {
     console.log('Employees: ', this.employees());
-    // console.log('Last id: ', this.employees()[this.employees().length - 1].empId);
     this.sub.unsubscribe();
   }
 
@@ -72,7 +76,7 @@ export class Employees implements OnInit, OnDestroy {
     this.roleFilter.set(filter);
     this.router.navigate([], {
       relativeTo: this.route,
-      queryParams: { search: filter || null },
+      queryParams: { role: filter || null },
       queryParamsHandling: 'merge',
     });
   }

@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { SignIn } from './Pages/sign-in/sign-in';
 import { Home } from './Pages/home/home';
-import { authGuardGuard } from './auth-guard-guard';
+import { authGuardGuard } from './Guards/auth-guard-guard';
 import { Welcome } from './Pages/welcome/welcome';
 import { Employees } from './Pages/employees/employees';
 import { ErrorPage } from './Pages/error-page/error-page';
@@ -10,7 +10,8 @@ import { Profile } from './Pages/Profile/profile/profile';
 import { AddEmployee } from './Pages/add-employee/add-employee';
 import { LeaveBalanceComponent } from './Pages/leave-balance-component/leave-balance-component';
 import { EditProfile } from './Pages/Profile/edit-profile/edit-profile';
-import { roleGuardGuard } from './role-guard-guard';
+import { roleGuardGuard } from './Guards/role-guard-guard';
+import { accessGuardGuard } from './Guards/access-guard-guard';
 
 export const routes: Routes = [
   { path: '', component: Home, canActivate: [authGuardGuard] },
@@ -29,7 +30,7 @@ export const routes: Routes = [
   {
     path: 'employees/:id',
     component: EmployeeDetails,
-    canActivate: [authGuardGuard],
+    canActivate: [authGuardGuard, roleGuardGuard],
   },
   { path: 'profile', component: Profile, canActivate: [authGuardGuard] },
   { path: 'edit-profile', component: EditProfile, canActivate: [authGuardGuard] },
@@ -44,7 +45,7 @@ export const routes: Routes = [
       import('./Pages/employee-leave-balance-component/employee-leave-component').then(
         (m) => m.EmployeeLeaveComponent,
       ),
-      canActivate: [authGuardGuard],
+    canActivate: [authGuardGuard, accessGuardGuard],
   },
   {
     path: 'leave-requests',
@@ -60,7 +61,7 @@ export const routes: Routes = [
       import('./Pages/employee-leave-requests-component/employee-leave-requests-component').then(
         (m) => m.EmployeeLeaveRequestsComponent,
       ),
-      canActivate: [authGuardGuard],
+    canActivate: [authGuardGuard, accessGuardGuard],
   },
   {
     path: 'new-request',
