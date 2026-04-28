@@ -1,0 +1,51 @@
+<div class="flex justify-center bg-gray-200 h-screen w-full py-10">
+  <div class="flex flex-col gap-20 w-full px-20">
+    <div class="flex justify-between">
+      <div
+        class="flex items-center justify-center bg-white w-65 h-30 rounded-lg shadow-lg hover:shadow-2xl transition duration-300"
+      >
+        <div class="text-center space-y-4">
+          <h1 class="text-5xl">{{ workingDaysCount() }}</h1>
+          <h1 class="text-sm">Total Working Days</h1>
+        </div>
+      </div>
+      <div
+        class="flex items-center justify-center bg-white w-65 h-30 rounded-lg shadow-lg hover:shadow-2xl transition duration-300"
+      >
+        <div class="text-center space-y-4">
+          <h1 class="text-5xl">{{ LeaveTakenCount() }}</h1>
+          <h1 class="text-sm">Number of Leave Taken</h1>
+        </div>
+      </div>
+      <div
+        class="flex items-center justify-center bg-white w-65 h-30 rounded-lg shadow-lg hover:shadow-2xl transition duration-300"
+      >
+        <div class="text-center space-y-4">
+          <h1 class="text-5xl">{{ reqCount() }}</h1>
+          <h1 class="text-sm">Number of Leave Requests</h1>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-center gap-8">
+      <app-attendance-chart></app-attendance-chart>
+      <div
+        class="flex flex-col items-center justify-center bg-white w-95 h-50 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 gap-8"
+      >
+        <div>
+          <h1 class="text-2xl font-bold">Leave Summary</h1>
+        </div>
+        <div class="flex gap-6">
+          <div class="text-center space-y-4">
+            <h1 class="text-5xl">{{ sickLeaveCount() }}</h1>
+            <h1 class="text-sm">Sick Leave Remaining</h1>
+          </div>
+          <div class="text-center space-y-4">
+            <h1 class="text-5xl">{{ paidLeaveCount() }}</h1>
+            <h1 class="text-sm">Paid Leave Remaining</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-between"></div>
+  </div>
+</div>
