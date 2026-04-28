@@ -6,10 +6,13 @@ export const authGuardGuard: CanActivateFn = (route, state) => {
   let router = inject(Router);
   isLoggedin = isLoggedin ? JSON.parse(isLoggedin) : '';
 
-  let search = route.queryParams['search'];
-  let role = route.queryParams['role'];
+  let search: string = route.queryParams['search'];
+  let role: string = route.queryParams['role'];
 
-  if (search && role) {
+  let id: number = route.params['id'];
+  console.log('auth id:', id);
+
+  if ((search && role) || id) {
     if (isLoggedin) return true;
     else return router.createUrlTree(['/sign-in'], { queryParams: { returnUrl: state.url } });
   }
