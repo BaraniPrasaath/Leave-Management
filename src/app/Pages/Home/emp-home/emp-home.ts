@@ -32,7 +32,7 @@ export class EmpHome {
     this.appService
       .getLeaveRequestsByEmpId(this.empId || 0)
       .subscribe(
-        (res) => (this.LeaveTakenCount.set(res.length), this.reqCount.set(resizeBy.length)),
+        (res) => (this.LeaveTakenCount.set(res.length), this.reqCount.set(res.length)),
       );
   }
 }

@@ -1,5 +1,5 @@
 <div
-  class="bg-white shadow-lg h-80 w-65 rounded-xl overflow-hidden hover:shadow-[0_0_8px_8px_rgba(0,0,0,0.2)] duration-500"
+  class="bg-white shadow-lg h-80 md:w-65 w-90 rounded-xl overflow-hidden hover:shadow-[0_0_8px_8px_rgba(0,0,0,0.2)] duration-500"
 >
   <div class="flex flex-col justify-center h-1/2 w-full gap-2">
     <div class="flex justify-center items-center h-fit w-full">
@@ -30,8 +30,8 @@
       </div>
     </div>
     <div class="flex h-17 items-center">
-      <div class="flex gap-2">
-        <div class="flex gap-2 px-2 justify-between bg-white w-35">
+      <div class="flex md:gap-2">
+        <div class="flex gap-2 md:px-2 px-16 justify-between bg-white md:w-35 w-65">
           <div class="flex flex-wrap bg-red-600 rounded-full w-10 h-10 justify-center items-center">
             <h1>{{ emp.sickLeaveBalance }}</h1>
           </div>
@@ -39,7 +39,7 @@
             <h1>{{ emp.paidLeaveBalance }}</h1>
           </div>
         </div>
-        <div class="w-25 flex justify-end items-end">
+        <div class="md:w-25 flex md:justify-end justify-start items-center md:items-end">
           <div
             class="flex justify-end items-end text-xs w-fit cursor-pointer text-[#01003f81] hover:text-[#271ad391]"
             (click)="goToDetails(emp.empId)"

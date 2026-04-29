@@ -13,6 +13,7 @@ import { userModel } from '../../DataModels/userModel';
 export class AddEmployee {
   userForm!: FormGroup;
   submitted: boolean = false;
+  errMsg = signal('');
   payload: userModel = {
     empId: 0,
     empName: '',
@@ -76,7 +77,13 @@ export class AddEmployee {
           console.log('Error body:', err.error);
         },
       });
+    } else {
+      this.errMsg.set('Someting went wrong... fill the details correctly');
     }
+  }
+
+  onDraft() {
+    alert('This Feature is Not Completed');
   }
 
   onClear() {
